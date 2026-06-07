@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MacroPulse Dashboard</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+.hero{
+height:350px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+background:
+linear-gradient(
+135deg,
+#ff6b6b,
+#8b5cf6,
+#2563eb
+);
+
+text-align:center;
+}
+
+.hero h1{
+font-size:60px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:22px;
+}
+
+.search{
+margin-top:25px;
+}
+
+.search input{
+width:500px;
+max-width:90%;
+padding:15px;
+border:none;
+border-radius:50px;
+font-size:18px;
+}
+
+.cards{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
+padding:40px;
+}
+
+.card{
+width:300px;
+background:#1e293b;
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card i{
+font-size:45px;
+margin-bottom:15px;
+color:#fbbf24;
+}
+
+.card h2{
+margin-bottom:15px;
+}
+
+.card p{
+font-size:28px;
+font-weight:bold;
+}
+
+.section-title{
+text-align:center;
+margin-top:20px;
+margin-bottom:20px;
+font-size:40px;
+}
+
+.table-box{
+width:90%;
+margin:auto;
+background:#1e293b;
+padding:20px;
+border-radius:20px;
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#2563eb;
+padding:15px;
+}
+
+td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #334155;
+}
+
+.flag{
+font-size:28px;
+}
+
+.footer{
+text-align:center;
+padding:40px;
+color:#94a3b8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+
+<h1>📈 MacroPulse</h1>
+
+<p>Economy • Currency • Metals • Country Analytics</p>
+
+<div class="search">
+<input type="text"
+placeholder="Search countries, currencies, GDP...">
+</div>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<i class="fas fa-coins"></i>
+<h2>Gold Price</h2>
+<p id="goldPrice">Loading...</p>
+</div>
+
+<div class="card">
+<i class="fas fa-medal"></i>
+<h2>Silver Price</h2>
+<p id="silverPrice">Loading...</p>
+</div>
+
+<div class="card">
+<i class="fas fa-dollar-sign"></i>
+<h2>USD Rate</h2>
+<p id="usdRate">Loading...</p>
+</div>
+
+</div>
+
+<h2 class="section-title">🌍 Top Economies</h2>
+
+<div class="table-box">
+
+<table>
+
+<tr>
+<th>Flag</th>
+<th>Country</th>
+<th>GDP</th>
+<th>Rank</th>
+</tr>
+
+<tr>
+<td class="flag">🇺🇸</td>
+<td>USA</td>
+<td>29 Trillion USD</td>
+<td>#1</td>
+</tr>
+
+<tr>
+<td class="flag">🇨🇳</td>
+<td>China</td>
+<td>18.5 Trillion USD</td>
+<td>#2</td>
+</tr>
+
+<tr>
+<td class="flag">🇩🇪</td>
+<td>Germany</td>
+<td>4.7 Trillion USD</td>
+<td>#3</td>
+</tr>
+
+<tr>
+<td class="flag">🇯🇵</td>
+<td>Japan</td>
+<td>4.1 Trillion USD</td>
+<td>#4</td>
+</tr>
+
+<tr>
+<td class="flag">🇮🇳</td>
+<td>India</td>
+<td>4.0 Trillion USD</td>
+<td>#5</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="footer">
+MacroPulse © 2026
+</div>
+
+<script>
+
+fetch('/gold')
+.then(response=>response.json())
+.then(data=>{
+document.getElementById('goldPrice')
+.innerText='₹'+data.price;
+});
+
+fetch('/silver')
+.then(response=>response.json())
+.then(data=>{
+document.getElementById('silverPrice')
+.innerText='₹'+data.price;
+});
+
+fetch('/usd')
+.then(response=>response.json())
+.then(data=>{
+document.getElementById('usdRate')
+.innerText='₹'+data.usdToInr;
+});
+
+</script>
+
+</body>
+</html>
