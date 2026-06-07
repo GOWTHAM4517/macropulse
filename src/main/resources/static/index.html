@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,45 +24,55 @@ background:#0f172a;
 color:white;
 }
 
+/* HERO */
+
 .hero{
-height:350px;
+height:450px;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+text-align:center;
 
 background:
 linear-gradient(
 135deg,
-#ff6b6b,
-#8b5cf6,
-#2563eb
+#ff6b6b 0%,
+#c026d3 50%,
+#4f46e5 100%
 );
-
-text-align:center;
 }
 
 .hero h1{
-font-size:60px;
-margin-bottom:10px;
+font-size:70px;
+margin-bottom:15px;
 }
 
 .hero p{
-font-size:22px;
-}
-
-.search{
-margin-top:25px;
+font-size:24px;
+margin-bottom:30px;
 }
 
 .search input{
-width:500px;
+width:700px;
 max-width:90%;
-padding:15px;
+padding:18px;
 border:none;
 border-radius:50px;
-font-size:18px;
+font-size:20px;
+outline:none;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
 }
+
+/* FLAGS */
+
+.flags{
+text-align:center;
+font-size:50px;
+padding:25px;
+}
+
+/* CARDS */
 
 .cards{
 display:flex;
@@ -72,21 +83,23 @@ padding:40px;
 }
 
 .card{
-width:300px;
-background:#1e293b;
+width:320px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
 padding:30px;
 border-radius:20px;
-box-shadow:0 0 20px rgba(0,0,0,0.4);
+text-align:center;
+border:1px solid rgba(255,255,255,0.1);
 transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-10px);
+transform:translateY(-10px) scale(1.03);
 }
 
 .card i{
-font-size:45px;
-margin-bottom:15px;
+font-size:50px;
+margin-bottom:20px;
 color:#fbbf24;
 }
 
@@ -95,23 +108,25 @@ margin-bottom:15px;
 }
 
 .card p{
-font-size:28px;
+font-size:30px;
 font-weight:bold;
 }
 
+/* TABLE */
+
 .section-title{
 text-align:center;
-margin-top:20px;
-margin-bottom:20px;
 font-size:40px;
+margin-top:30px;
+margin-bottom:25px;
 }
 
 .table-box{
 width:90%;
 margin:auto;
 background:#1e293b;
-padding:20px;
 border-radius:20px;
+padding:20px;
 overflow-x:auto;
 }
 
@@ -135,13 +150,17 @@ border-bottom:1px solid #334155;
 font-size:28px;
 }
 
+/* FOOTER */
+
 .footer{
 text-align:center;
 padding:40px;
+margin-top:30px;
 color:#94a3b8;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -150,13 +169,17 @@ color:#94a3b8;
 
 <h1>📈 MacroPulse</h1>
 
-<p>Economy • Currency • Metals • Country Analytics</p>
+<p>Economic Intelligence Dashboard</p>
 
 <div class="search">
 <input type="text"
-placeholder="Search countries, currencies, GDP...">
+placeholder="Search Economy, GDP, Gold, USD, Countries...">
 </div>
 
+</div>
+
+<div class="flags">
+🇮🇳 🇺🇸 🇨🇳 🇩🇪 🇯🇵
 </div>
 
 <div class="cards">
@@ -190,42 +213,42 @@ placeholder="Search countries, currencies, GDP...">
 <tr>
 <th>Flag</th>
 <th>Country</th>
-<th>GDP</th>
+<th>GDP (Trillion USD)</th>
 <th>Rank</th>
 </tr>
 
 <tr>
 <td class="flag">🇺🇸</td>
 <td>USA</td>
-<td>29 Trillion USD</td>
+<td>29.0</td>
 <td>#1</td>
 </tr>
 
 <tr>
 <td class="flag">🇨🇳</td>
 <td>China</td>
-<td>18.5 Trillion USD</td>
+<td>18.5</td>
 <td>#2</td>
 </tr>
 
 <tr>
 <td class="flag">🇩🇪</td>
 <td>Germany</td>
-<td>4.7 Trillion USD</td>
+<td>4.7</td>
 <td>#3</td>
 </tr>
 
 <tr>
 <td class="flag">🇯🇵</td>
 <td>Japan</td>
-<td>4.1 Trillion USD</td>
+<td>4.1</td>
 <td>#4</td>
 </tr>
 
 <tr>
 <td class="flag">🇮🇳</td>
 <td>India</td>
-<td>4.0 Trillion USD</td>
+<td>4.0</td>
 <td>#5</td>
 </tr>
 
@@ -234,30 +257,30 @@ placeholder="Search countries, currencies, GDP...">
 </div>
 
 <div class="footer">
-MacroPulse © 2026
+MacroPulse • Built with Spring Boot
 </div>
 
 <script>
 
 fetch('/gold')
-.then(response=>response.json())
-.then(data=>{
-document.getElementById('goldPrice')
-.innerText='₹'+data.price;
+.then(response => response.json())
+.then(data => {
+document.getElementById('goldPrice').innerText =
+'Rs ' + data.price;
 });
 
 fetch('/silver')
-.then(response=>response.json())
-.then(data=>{
-document.getElementById('silverPrice')
-.innerText='₹'+data.price;
+.then(response => response.json())
+.then(data => {
+document.getElementById('silverPrice').innerText =
+'Rs ' + data.price;
 });
 
 fetch('/usd')
-.then(response=>response.json())
-.then(data=>{
-document.getElementById('usdRate')
-.innerText='₹'+data.usdToInr;
+.then(response => response.json())
+.then(data => {
+document.getElementById('usdRate').innerText =
+'Rs ' + data.usdToInr;
 });
 
 </script>
