@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,126 +11,131 @@
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-    background:#07142d;
-    color:white;
+background:#07142d;
+color:white;
 }
 
-/* HERO */
-
 .hero{
-    background:linear-gradient(135deg,#ff6b6b,#d633ff,#4c6fff);
-    text-align:center;
-    padding:100px 20px;
+background:linear-gradient(
+135deg,
+#ff6b6b,
+#c026d3,
+#4f46e5
+);
+
+padding:100px 20px;
+text-align:center;
 }
 
 .hero h1{
-    font-size:90px;
-    font-weight:800;
-    margin-bottom:20px;
+font-size:80px;
+margin-bottom:20px;
 }
 
 .hero p{
-    font-size:30px;
-    margin-bottom:40px;
+font-size:24px;
+margin-bottom:30px;
 }
 
 #searchBox{
-    width:60%;
-    max-width:900px;
-    padding:22px;
-    border:none;
-    border-radius:50px;
-    font-size:24px;
-    outline:none;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+width:60%;
+max-width:800px;
+padding:20px;
+border:none;
+border-radius:50px;
+font-size:22px;
+outline:none;
 }
 
-/* FLAGS */
-
 .flags{
-    text-align:center;
-    padding:30px;
+text-align:center;
+padding:30px;
 }
 
 .flags img{
-    width:55px;
-    margin:0 10px;
-    border-radius:6px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.4);
+width:60px;
+margin:10px;
+border-radius:8px;
 }
 
-/* CARDS */
-
 .container{
-    width:90%;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
-    padding-bottom:50px;
+width:90%;
+margin:auto;
+
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(300px,1fr));
+
+gap:25px;
+
+padding-bottom:50px;
 }
 
 .card{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(10px);
-    border-radius:20px;
-    padding:30px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.4);
-    transition:0.3s;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+
+padding:30px;
+
+border-radius:20px;
+
+transition:0.3s;
+
+box-shadow:
+0 8px 20px rgba(0,0,0,0.4);
 }
 
 .card:hover{
-    transform:translateY(-10px);
+transform:translateY(-10px);
 }
 
 .card h2{
-    color:#ffd700;
-    margin-bottom:15px;
+margin-bottom:15px;
+color:#ffd700;
 }
 
 .value{
-    font-size:42px;
-    font-weight:bold;
-    margin-bottom:10px;
+font-size:42px;
+font-weight:bold;
+margin-bottom:10px;
 }
 
-/* ECONOMIES */
-
 .economies{
-    width:90%;
-    margin:30px auto;
-    background:rgba(255,255,255,0.08);
-    padding:30px;
-    border-radius:20px;
+width:90%;
+margin:30px auto;
+
+background:rgba(255,255,255,0.08);
+
+padding:30px;
+
+border-radius:20px;
 }
 
 .economies h2{
-    color:#00d4ff;
-    margin-bottom:20px;
+margin-bottom:20px;
+color:#00d4ff;
 }
 
 .economies ul{
-    list-style:none;
+list-style:none;
 }
 
 .economies li{
-    padding:10px;
-    font-size:22px;
+padding:10px;
+font-size:20px;
 }
 
-/* FOOTER */
-
 footer{
-    text-align:center;
-    padding:30px;
-    color:#bbb;
+text-align:center;
+padding:30px;
+color:#bbb;
 }
 
 </style>
@@ -140,15 +146,15 @@ footer{
 
 <div class="hero">
 
-    <h1>MacroPulse</h1>
+<h1>MacroPulse</h1>
 
-    <p>Economic Intelligence Dashboard</p>
+<p>Economic Intelligence Dashboard</p>
 
-    <input
-        type="text"
-        id="searchBox"
-        placeholder="Search Gold, Silver, USD, India, USA..."
-        onkeyup="searchCards()">
+<input
+type="text"
+id="searchBox"
+placeholder="Search Gold, Silver, USD, India..."
+onkeyup="searchCards()">
 
 </div>
 
@@ -164,83 +170,125 @@ footer{
 
 <div class="container">
 
-    <div class="card">
-        <h2>Gold Price</h2>
-        <div class="value">₹9800</div>
-        <p>24K Gold Price Per Gram</p>
-    </div>
+<div class="card">
+<h2>Gold Price</h2>
+<div class="value" id="goldPrice">Loading...</div>
+<p>24K Gold Price</p>
+</div>
 
-    <div class="card">
-        <h2>Silver Price</h2>
-        <div class="value">₹120.5</div>
-        <p>Silver Price Per Gram</p>
-    </div>
+<div class="card">
+<h2>Silver Price</h2>
+<div class="value" id="silverPrice">Loading...</div>
+<p>Silver Price</p>
+</div>
 
-    <div class="card">
-        <h2>USD Rate</h2>
-        <div class="value">₹97.15</div>
-        <p>USD to INR Exchange Rate</p>
-    </div>
+<div class="card">
+<h2>USD Rate</h2>
+<div class="value" id="usdRate">Loading...</div>
+<p>USD to INR</p>
+</div>
 
-    <div class="card">
-        <h2>India GDP</h2>
-        <div class="value">$4 Trillion</div>
-        <p>Current GDP Estimate</p>
-    </div>
+<div class="card">
+<h2>India GDP</h2>
+<div class="value">$4T</div>
+<p>Current GDP</p>
+</div>
 
-    <div class="card">
-        <h2>USA GDP</h2>
-        <div class="value">$29 Trillion</div>
-        <p>Largest Economy</p>
-    </div>
+<div class="card">
+<h2>USA GDP</h2>
+<div class="value">$29T</div>
+<p>Largest Economy</p>
+</div>
 
-    <div class="card">
-        <h2>China GDP</h2>
-        <div class="value">$18.5 Trillion</div>
-        <p>Second Largest Economy</p>
-    </div>
+<div class="card">
+<h2>China GDP</h2>
+<div class="value">$18.5T</div>
+<p>Second Largest Economy</p>
+</div>
 
 </div>
 
 <div class="economies">
 
-    <h2>Top Economies</h2>
+<h2>Top Economies</h2>
 
-    <ul>
-        <li>USA - 29 Trillion USD</li>
-        <li>China - 18.5 Trillion USD</li>
-        <li>Germany - 4.7 Trillion USD</li>
-        <li>Japan - 4.1 Trillion USD</li>
-        <li>India - 4.0 Trillion USD</li>
-    </ul>
+<ul>
+<li>USA - 29 Trillion USD</li>
+<li>China - 18.5 Trillion USD</li>
+<li>Germany - 4.7 Trillion USD</li>
+<li>Japan - 4.1 Trillion USD</li>
+<li>India - 4.0 Trillion USD</li>
+</ul>
 
 </div>
 
 <footer>
-    MacroPulse © 2026
+MacroPulse © 2026
 </footer>
 
 <script>
 
 function searchCards(){
 
-    let input=document.getElementById("searchBox");
-    let filter=input.value.toUpperCase();
+let input =
+document.getElementById("searchBox");
 
-    let cards=document.getElementsByClassName("card");
+let filter =
+input.value.toUpperCase();
 
-    for(let i=0;i<cards.length;i++){
+let cards =
+document.getElementsByClassName("card");
 
-        let text=cards[i].innerText;
+for(let i=0;i<cards.length;i++){
 
-        if(text.toUpperCase().indexOf(filter)>-1){
-            cards[i].style.display="";
-        }
-        else{
-            cards[i].style.display="none";
-        }
-    }
+let text = cards[i].innerText;
+
+if(text.toUpperCase().indexOf(filter)>-1){
+
+cards[i].style.display="";
+
+}else{
+
+cards[i].style.display="none";
+
 }
+
+}
+
+}
+
+/* GOLD */
+
+fetch('/gold')
+.then(response => response.json())
+.then(data => {
+
+document.getElementById('goldPrice')
+.innerHTML='₹'+data.price;
+
+});
+
+/* SILVER */
+
+fetch('/silver')
+.then(response => response.json())
+.then(data => {
+
+document.getElementById('silverPrice')
+.innerHTML='₹'+data.price;
+
+});
+
+/* USD */
+
+fetch('/usd')
+.then(response => response.json())
+.then(data => {
+
+document.getElementById('usdRate')
+.innerHTML='₹'+data.usdToInr;
+
+});
 
 </script>
 
