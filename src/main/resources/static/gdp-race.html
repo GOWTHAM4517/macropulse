@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDP Race · MacroPulse</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+</head>
+
+<body>
+
+<header id="siteNav" class="site-nav">
+
+    <div class="ticker-strip" aria-label="Live market ticker">
+        <div class="ticker-track">
+            <span class="ticker-item" data-ticker="bitcoin">BTC <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="gold">GOLD <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="usd">USD/INR <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="nifty">NIFTY 50 <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="bitcoin">BTC <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="gold">GOLD <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="usd">USD/INR <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="nifty">NIFTY 50 <strong>--</strong></span>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+
+        <a href="index.html" class="brand">
+            <span class="brand-mark">M</span>
+            <span class="brand-name">MacroPulse</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gdp-race.html">GDP Race</a>
+            <a href="calendar.html">Calendar</a>
+        </div>
+
+    </nav>
+
+</header>
+
+<main>
+
+<a href="index.html" class="back-link">← Back to Markets</a>
+
+<section class="section">
+
+    <div class="section-heading">
+        <p class="section-kicker">Economies at a Glance</p>
+        <h2>The world's largest GDPs, today</h2>
+    </div>
+
+    <div class="nav-card-grid">
+
+        <div class="nav-card" style="cursor:default;">
+            <span class="nav-card-icon">🇮🇳</span>
+            <span class="nav-card-title">India GDP</span>
+            <span class="nav-card-desc" id="indiaGDP">Loading...</span>
+        </div>
+
+        <div class="nav-card" style="cursor:default;">
+            <span class="nav-card-icon">🇺🇸</span>
+            <span class="nav-card-title">USA GDP</span>
+            <span class="nav-card-desc" id="usaGDP">Loading...</span>
+        </div>
+
+        <div class="nav-card" style="cursor:default;">
+            <span class="nav-card-icon">🇨🇳</span>
+            <span class="nav-card-title">China GDP</span>
+            <span class="nav-card-desc" id="chinaGDP">Loading...</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="gdpSection" class="race-section">
+
+    <div class="race-header">
+        <h2>Top Economies GDP Race</h2>
+        <p class="race-subtitle">Animated GDP rankings, 1960–present, powered by World Bank data</p>
+    </div>
+
+    <div class="race-toolbar">
+
+        <div class="toolbar-group">
+            <label class="toolbar-label" for="topSelector">Show</label>
+            <select id="topSelector" class="control-select">
+                <option value="10">Top 10</option>
+                <option value="20" selected>Top 20</option>
+                <option value="50">Top 50</option>
+            </select>
+        </div>
+
+        <div class="toolbar-group toolbar-grow">
+            <label class="toolbar-label" for="countrySearch">Highlight</label>
+            <input
+                type="text"
+                id="countrySearch"
+                class="control-input"
+                placeholder="Type a country name...">
+        </div>
+
+        <div class="toolbar-group">
+            <label class="toolbar-label" for="startYear">From</label>
+            <select id="startYear" class="control-select"></select>
+        </div>
+
+        <div class="toolbar-group">
+            <label class="toolbar-label" for="endYear">To</label>
+            <select id="endYear" class="control-select"></select>
+        </div>
+
+        <div class="toolbar-group">
+            <label class="toolbar-label" for="speedSelector">Speed</label>
+            <select id="speedSelector" class="control-select">
+                <option value="2000">0.5x</option>
+                <option value="1000" selected>1x</option>
+                <option value="500">2x</option>
+                <option value="250">4x</option>
+            </select>
+        </div>
+
+        <div class="toolbar-actions">
+            <button id="playBtn" class="btn btn-primary">▶ Play</button>
+            <button id="resetBtn" class="btn btn-ghost">⏮ Reset</button>
+            <button id="downloadBtn" class="btn btn-ghost">📷 PNG</button>
+        </div>
+
+    </div>
+
+    <div class="race-year-display">
+        <input
+            type="range"
+            id="yearSelector"
+            class="year-slider"
+            min="1960"
+            max="2024"
+            value="2024"
+            step="1">
+        <h3 id="currentYear" class="year-label">2024</h3>
+    </div>
+
+    <div class="compare-bar">
+        <label class="toolbar-label" for="country1">Compare</label>
+        <select id="country1" class="control-select"></select>
+        <span class="compare-vs">vs</span>
+        <select id="country2" class="control-select"></select>
+        <button id="compareBtn" class="btn btn-accent">Compare</button>
+    </div>
+
+    <div id="economyRace2" class="race-chart"></div>
+
+    <div class="movers-panel">
+        <h3 class="movers-title">🔥 Fastest Growing Economies</h3>
+        <div id="topMovers" class="movers-list"></div>
+    </div>
+
+</section>
+
+<div id="historyBackdrop" class="history-backdrop"></div>
+
+<div id="historyPanel" class="history-panel">
+    <button id="closeHistory" class="close-history">✕</button>
+    <h2 id="chartTitle" class="history-title">Country GDP History</h2>
+    <div id="chartScroll" class="history-scroll">
+        <canvas id="countryHistoryChart"></canvas>
+    </div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+    <p>MacroPulse © 2026 — Built as a student project.</p>
+</footer>
+
+<script src="js/assets-config.js"></script>
+<script src="js/nav-ticker.js"></script>
+<script src="js/gdp-cards.js"></script>
+<script src="js/economy-race.js"></script>
+
+</body>
+
+</html>

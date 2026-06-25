@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Economic Calendar · MacroPulse</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header id="siteNav" class="site-nav">
+
+    <div class="ticker-strip" aria-label="Live market ticker">
+        <div class="ticker-track">
+            <span class="ticker-item" data-ticker="bitcoin">BTC <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="gold">GOLD <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="usd">USD/INR <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="nifty">NIFTY 50 <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="bitcoin">BTC <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="gold">GOLD <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="usd">USD/INR <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="nifty">NIFTY 50 <strong>--</strong></span>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+
+        <a href="index.html" class="brand">
+            <span class="brand-mark">M</span>
+            <span class="brand-name">MacroPulse</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gdp-race.html">GDP Race</a>
+            <a href="calendar.html">Calendar</a>
+        </div>
+
+    </nav>
+
+</header>
+
+<main>
+
+<a href="index.html" class="back-link">← Back to Markets</a>
+
+<section class="economies" style="margin-top:30px;">
+
+    <div class="calendar-header">
+        <h2>Economic Calendar</h2>
+        <span class="sample-badge" title="Live economic calendar feeds require a paid data provider — these are representative sample events.">Sample Data</span>
+    </div>
+
+    <table id="calendarTable">
+
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Country</th>
+                <th>Event</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+
+    </table>
+
+</section>
+
+</main>
+
+<footer class="site-footer">
+    <p>MacroPulse © 2026 — Built as a student project. Economic Calendar uses sample data.</p>
+</footer>
+
+<script src="js/assets-config.js"></script>
+<script src="js/nav-ticker.js"></script>
+<script src="js/calendar.js"></script>
+
+</body>
+
+</html>

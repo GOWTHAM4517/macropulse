@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacroPulse — Economic Intelligence Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<!-- ===================== STICKY NAV + LIVE TICKER ===================== -->
+
+<header id="siteNav" class="site-nav">
+
+    <div class="ticker-strip" aria-label="Live market ticker">
+        <div class="ticker-track">
+            <span class="ticker-item" data-ticker="bitcoin">BTC <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="gold">GOLD <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="usd">USD/INR <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="nifty">NIFTY 50 <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="bitcoin">BTC <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="gold">GOLD <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="usd">USD/INR <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="nifty">NIFTY 50 <strong>--</strong></span>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+
+        <a href="index.html" class="brand">
+            <span class="brand-mark">M</span>
+            <span class="brand-name">MacroPulse</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gdp-race.html">GDP Race</a>
+            <a href="calendar.html">Calendar</a>
+        </div>
+
+    </nav>
+
+</header>
+
+<main>
+
+<!-- ===================== HERO ===================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <p class="hero-kicker">Economic Intelligence, in Real Time</p>
+
+        <h1 class="hero-title">Markets Move.<br>So Should You.</h1>
+
+        <p class="hero-sub">
+            MacroPulse tracks gold, silver, currency, crypto, and equity-index
+            prices live, alongside seven decades of World Bank GDP history.
+            Pick a market below to dive in.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#explore" class="btn btn-primary">Explore Markets ↓</a>
+            <a href="gdp-race.html" class="btn btn-ghost">See the GDP Race →</a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="hero-stat-label">Bitcoin</span>
+                <span class="hero-stat-value" id="heroBitcoin">--</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-label">Gold / gram</span>
+                <span class="hero-stat-value" id="heroGold">--</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-label">USD / INR</span>
+                <span class="hero-stat-value" id="heroUsd">--</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-label">Nifty 50</span>
+                <span class="hero-stat-value" id="heroNifty">--</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+
+<section class="section">
+
+    <div class="section-heading">
+        <p class="section-kicker">About MacroPulse</p>
+        <h2>One dashboard, every major market</h2>
+    </div>
+
+    <p class="about-text">
+        MacroPulse is an economic intelligence dashboard built to track the
+        markets people actually ask about: precious metals, the rupee, the
+        world's two biggest cryptocurrencies, and India's benchmark index —
+        each with its own live chart. Beneath it all sits seven decades of
+        World Bank GDP data, rendered as an animated race between the
+        world's largest economies. Pick a card below to open that market's
+        own page.
+    </p>
+
+</section>
+
+<!-- ===================== SEARCH ===================== -->
+
+<section class="search-section">
+
+    <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input
+            type="text"
+            id="searchBox"
+            class="search-input"
+            placeholder="Search Gold, Silver, Bitcoin, Nifty, USD, GDP, Calendar..."
+            onkeyup="searchCards()">
+        <button id="searchClear" class="search-clear" type="button" title="Clear search">✕</button>
+    </div>
+
+    <p id="searchStatus" class="search-status"></p>
+
+</section>
+
+<!-- ===================== NAVIGATION CARDS ===================== -->
+
+<section id="explore" class="section">
+
+    <div class="section-heading">
+        <p class="section-kicker">Live Markets</p>
+        <h2>Click a market to open its page</h2>
+    </div>
+
+    <div class="nav-card-grid">
+
+        <a href="gold.html" class="nav-card">
+            <span class="nav-card-icon">🥇</span>
+            <span class="nav-card-title">Gold</span>
+            <span class="nav-card-desc">24K gold price per gram, live, with a full price-history chart.</span>
+            <span class="nav-card-cta">Open Gold →</span>
+        </a>
+
+        <a href="silver.html" class="nav-card">
+            <span class="nav-card-icon">🥈</span>
+            <span class="nav-card-title">Silver</span>
+            <span class="nav-card-desc">Silver price per gram, live, with a full price-history chart.</span>
+            <span class="nav-card-cta">Open Silver →</span>
+        </a>
+
+        <a href="usd.html" class="nav-card">
+            <span class="nav-card-icon">💵</span>
+            <span class="nav-card-title">USD / INR</span>
+            <span class="nav-card-desc">Live US Dollar to Indian Rupee exchange rate.</span>
+            <span class="nav-card-cta">Open USD →</span>
+        </a>
+
+        <a href="bitcoin.html" class="nav-card">
+            <span class="nav-card-icon">₿</span>
+            <span class="nav-card-title">Bitcoin</span>
+            <span class="nav-card-desc">Live BTC price in INR, the world's largest cryptocurrency.</span>
+            <span class="nav-card-cta">Open Bitcoin →</span>
+        </a>
+
+        <a href="ethereum.html" class="nav-card">
+            <span class="nav-card-icon">◆</span>
+            <span class="nav-card-title">Ethereum</span>
+            <span class="nav-card-desc">Live ETH price in INR, the leading smart-contract platform.</span>
+            <span class="nav-card-cta">Open Ethereum →</span>
+        </a>
+
+        <a href="nifty.html" class="nav-card">
+            <span class="nav-card-icon">📈</span>
+            <span class="nav-card-title">Nifty 50</span>
+            <span class="nav-card-desc">Live NSE benchmark index value for the Indian stock market.</span>
+            <span class="nav-card-cta">Open Nifty 50 →</span>
+        </a>
+
+        <a href="gdp-race.html" class="nav-card">
+            <span class="nav-card-icon">🏆</span>
+            <span class="nav-card-title">GDP Race</span>
+            <span class="nav-card-desc">An animated bar-chart race of the world's largest economies, 1960–present.</span>
+            <span class="nav-card-cta">Open GDP Race →</span>
+        </a>
+
+        <a href="calendar.html" class="nav-card">
+            <span class="nav-card-icon">🗓️</span>
+            <span class="nav-card-title">Economic Calendar</span>
+            <span class="nav-card-desc">A snapshot of the day's major economic data releases.</span>
+            <span class="nav-card-cta">Open Calendar →</span>
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer class="site-footer">
+    <p>MacroPulse © 2026 — Built as a student project. Economic Calendar uses sample data; all other figures are sourced live where noted.</p>
+</footer>
+
+<script src="js/assets-config.js"></script>
+<script src="js/nav-ticker.js"></script>
+<script src="js/homepage.js"></script>
+<script src="js/search.js"></script>
+
+</body>
+
+</html>

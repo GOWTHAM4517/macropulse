@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USD/INR · MacroPulse</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<header id="siteNav" class="site-nav">
+
+    <div class="ticker-strip" aria-label="Live market ticker">
+        <div class="ticker-track">
+            <span class="ticker-item" data-ticker="bitcoin">BTC <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="gold">GOLD <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="usd">USD/INR <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="nifty">NIFTY 50 <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="bitcoin">BTC <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="gold">GOLD <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="usd">USD/INR <strong>--</strong></span>
+            <span class="ticker-item" data-ticker="nifty">NIFTY 50 <strong>--</strong></span>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+
+        <a href="index.html" class="brand">
+            <span class="brand-mark">M</span>
+            <span class="brand-name">MacroPulse</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gdp-race.html">GDP Race</a>
+            <a href="calendar.html">Calendar</a>
+        </div>
+
+    </nav>
+
+</header>
+
+<main>
+
+<a href="index.html" class="back-link">← Back to Markets</a>
+
+<div class="detail-hero">
+
+    <div class="detail-heading">
+        <span class="detail-icon" id="assetIcon"></span>
+        <div>
+            <h1 id="assetTitle">Loading...</h1>
+            <p id="assetSubtitle"></p>
+        </div>
+    </div>
+
+    <span class="live-badge is-live" id="liveBadge">● LIVE</span>
+
+</div>
+
+<div class="detail-price-row">
+    <div class="detail-price" id="assetPrice">Loading...</div>
+    <span class="change-badge large" id="assetChange">—</span>
+</div>
+
+<div class="detail-chart-box">
+    <canvas id="detailChart"></canvas>
+</div>
+
+<div class="detail-stats">
+    <div class="stat-chip">
+        <span class="stat-label">Session High</span>
+        <span class="stat-value" id="statHigh">--</span>
+    </div>
+    <div class="stat-chip">
+        <span class="stat-label">Session Low</span>
+        <span class="stat-value" id="statLow">--</span>
+    </div>
+    <div class="stat-chip">
+        <span class="stat-label">Data Points</span>
+        <span class="stat-value" id="statPoints">--</span>
+    </div>
+</div>
+
+<p class="detail-footnote">
+    Price updates every 10 seconds. Source: open.er-api.com live exchange rates.
+</p>
+
+</main>
+
+<footer class="site-footer">
+    <p>MacroPulse © 2026 — Built as a student project.</p>
+</footer>
+
+<script src="js/assets-config.js"></script>
+<script src="js/nav-ticker.js"></script>
+<script>window.ASSET_KEY = "usd";</script>
+<script src="js/detail-page.js"></script>
+
+</body>
+
+</html>
